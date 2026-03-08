@@ -40,7 +40,7 @@ title: Python for Health, Economic, and Social Data Science
 </div>
 
 <p class="course-hero-people">
-  <strong>First Day:</strong> Meet at the Porter's lodge at Nuffield College at <b>09:00</b>! We look forward to welcoming you!<br>
+  <strong>First Day:</strong> Meet at the Porter's lodge at  <a href="assets/nuffield_map.png">Nuffield College</a> at <b>09:00</b>! We look forward to welcoming you!<br>
 </p>
 
 
