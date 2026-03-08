@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pre-Arrival Setup Guide | LCDS Python Course</title>
+  <style>
+    :root {
+      --ink: #1f2c38;
+      --muted: #4f5d69;
+      --surface: #fffdf8;
+      --border: #d9ccb3;
+      --accent: #0e6a63;
+      --accent-soft: #e8f4f2;
+      --code-bg: #f5efe1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Libre Franklin", "Avenir Next", "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(820px, 100% - 2rem);
+      margin: 2rem auto;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: 0 10px 24px rgba(21, 35, 51, 0.08);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.22rem;
+    }
+
+    h3 {
+      margin-top: 1.1rem;
+      margin-bottom: 0.45rem;
+      font-size: 1.03rem;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: var(--code-bg);
+      padding: 0.1rem 0.3rem;
+      border-radius: 6px;
+    }
+
+    pre {
+      margin: 0.55rem 0 0.85rem;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid #e1d7c4;
+      border-radius: 10px;
+      background: var(--code-bg);
+      overflow-x: auto;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      white-space: pre;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .intro {
+      margin-bottom: 1rem;
+    }
+
+    .note,
+    .tip {
+      padding: 0.8rem 0.9rem;
+      border-left: 4px solid #7aa89d;
+      border-radius: 8px;
+      background: var(--accent-soft);
+    }
+
+    .tip {
+      margin-top: 0.75rem;
+      border-left-color: var(--accent);
+    }
+
+    .checklist {
+      margin-top: 0.2rem;
+    }
+
+    .step {
+      border-top: 1px solid #eadfcb;
+      padding-top: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    details {
+      margin: 0.6rem 0;
+      border: 1px solid #e4d8c2;
+      border-radius: 10px;
+      background: #fffefa;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 0.6rem 0.8rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    details > div {
+      border-top: 1px solid #efe4cf;
+      padding: 0.7rem 0.9rem 0.85rem;
+    }
+
+    .quick-check li {
+      margin-bottom: 0.35rem;
+    }
+
+    .support {
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="../">Back to course page</a></p>
+    <h1>Pre-Arrival Setup Guide</h1>
+    <p class="intro">
+      Please complete this setup before the first day of class.
+      We will install three tools: <strong>Git</strong>, <strong>Anaconda Python</strong>, and <strong>VS Code</strong>.
+    </p>
+
+    <div class="note">
+      <strong>Before you start</strong>
+      <ul class="checklist">
+        <li>Have admin access on your laptop.</li>
+        <li>Keep at least 8-10 GB free disk space.</li>
+        <li>Use a stable internet connection.</li>
+        <li>If you get stuck, do not worry. Bring your laptop and we will help.</li>
+      </ul>
+    </div>
+
+    <section class="step" aria-labelledby="git-step">
+      <h2 id="git-step">1. Install Git</h2>
+      <p>Git is the version control tool we will use to download and manage course materials.</p>
+
+      <details open>
+        <summary>Windows</summary>
+        <div>
+          <ol>
+            <li>Download Git from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener noreferrer">git-scm.com/download/win</a>.</li>
+            <li>Run the installer and keep the default options.</li>
+            <li>Open <code>Git Bash</code> (or PowerShell).</li>
+          </ol>
+          <p>Check installation:</p>
+          <pre><code>git --version</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>macOS</summary>
+        <div>
+          <ol>
+            <li>Open the Terminal app.</li>
+            <li>Run this command:</li>
+          </ol>
+          <pre><code>xcode-select --install</code></pre>
+          <p>This installs Apple command line tools, including Git.</p>
+          <p>Check installation:</p>
+          <pre><code>git --version</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Linux</summary>
+        <div>
+          <p>Use the command for your distribution:</p>
+          <pre><code># Ubuntu / Debian
+sudo apt update
+sudo apt install -y git
+
+# Fedora
+sudo dnf install -y git
+
+# Arch
+sudo pacman -S --needed git</code></pre>
+          <p>Check installation:</p>
+          <pre><code>git --version</code></pre>
+        </div>
+      </details>
+
+      <div class="tip">
+        Optional but recommended (run once):
+        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+      </div>
+    </section>
+
+    <section class="step" aria-labelledby="anaconda-step">
+      <h2 id="anaconda-step">2. Install Anaconda Python</h2>
+      <p>
+        Anaconda gives you Python plus common data science tools in one installer.
+        Download it from <a href="https://www.anaconda.com/download" target="_blank" rel="noopener noreferrer">anaconda.com/download</a>.
+      </p>
+
+      <details open>
+        <summary>Windows</summary>
+        <div>
+          <ol>
+            <li>Download the 64-bit graphical installer for Windows.</li>
+            <li>Run the installer with <code>Just Me</code> selected.</li>
+            <li>Keep default options. You can leave "Add Anaconda to my PATH" unchecked.</li>
+            <li>Open <code>Anaconda Prompt</code> after install.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>macOS</summary>
+        <div>
+          <ol>
+            <li>Choose the correct installer: <code>Apple Silicon</code> (M1/M2/M3/M4) or <code>Intel</code>.</li>
+            <li>Run the package installer.</li>
+            <li>Open Terminal after install.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Linux</summary>
+        <div>
+          <ol>
+            <li>Download the Linux installer script from Anaconda.</li>
+            <li>From terminal, run:</li>
+          </ol>
+          <pre><code>bash ~/Downloads/Anaconda3-*-Linux-*.sh</code></pre>
+          <ol start="3">
+            <li>Accept defaults and answer <code>yes</code> when asked to run <code>conda init</code>.</li>
+            <li>Close and reopen terminal.</li>
+          </ol>
+        </div>
+      </details>
+
+      <h3>Check Anaconda installation (all operating systems)</h3>
+      <p>Use <code>Anaconda Prompt</code> on Windows, or Terminal on macOS/Linux.</p>
+      <pre><code>conda --version
+python --version
+jupyter --version</code></pre>
+
+      <h3>Create a course environment (recommended)</h3>
+      <pre><code>conda create -n lcds-python python=3.12 -y
+conda activate lcds-python
+python -c "print('Python works')"</code></pre>
+      <p>When you are done testing:</p>
+      <pre><code>conda deactivate</code></pre>
+    </section>
+
+    <section class="step" aria-labelledby="vscode-step">
+      <h2 id="vscode-step">3. Install VS Code</h2>
+      <p>VS Code is the editor we recommend for writing and running code.</p>
+
+      <details open>
+        <summary>Windows / macOS / Linux</summary>
+        <div>
+          <ol>
+            <li>Download VS Code from <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">code.visualstudio.com</a>.</li>
+            <li>Install it normally for your operating system.</li>
+            <li>Open VS Code, then install these extensions:</li>
+          </ol>
+          <ul>
+            <li><code>Python</code> (by Microsoft)</li>
+            <li><code>Jupyter</code> (by Microsoft)</li>
+          </ul>
+        </div>
+      </details>
+
+      <h3>Check VS Code installation</h3>
+      <p>In terminal (or PowerShell), run:</p>
+      <pre><code>code --version</code></pre>
+      <p>If macOS says <code>code: command not found</code>:</p>
+      <ol>
+        <li>Open VS Code.</li>
+        <li>Press <code>Cmd+Shift+P</code>.</li>
+        <li>Run: <code>Shell Command: Install 'code' command in PATH</code>.</li>
+        <li>Restart terminal and run <code>code --version</code> again.</li>
+      </ol>
+    </section>
+
+    <section class="step" aria-labelledby="final-check-step">
+      <h2 id="final-check-step">4. Final full-system check</h2>
+      <p>Run the commands below in terminal (or Anaconda Prompt on Windows):</p>
+      <pre><code>git --version
+conda --version
+python --version
+jupyter --version
+code --version</code></pre>
+      <p>You should see version numbers for all five commands and no errors.</p>
+
+      <h3>Optional quick coding test</h3>
+      <pre><code>conda activate lcds-python
+python -c "print('Setup complete')"</code></pre>
+    </section>
+
+    <section class="step support" aria-labelledby="troubleshooting-step">
+      <h2 id="troubleshooting-step">Troubleshooting</h2>
+      <ul class="quick-check">
+        <li><strong>Command not found:</strong> close and reopen terminal, then retry.</li>
+        <li><strong>Still failing on Windows:</strong> run commands in <code>Anaconda Prompt</code> instead of PowerShell.</li>
+        <li><strong>Still failing on macOS:</strong> restart Terminal after installation.</li>
+        <li><strong>Linux permissions issue:</strong> confirm you used <code>sudo</code> for package install commands.</li>
+      </ul>
+      <p class="note">
+        If anything does not work, bring your laptop to the course anyway.
+        We will run a setup support session before teaching starts.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
