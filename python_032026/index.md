@@ -72,7 +72,7 @@ title: Python for Health, Economic, and Social Data Science
           <strong>09:30-12:30:</strong> Lecture One: Basic object types and an introduction to collections.<br>
           <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
           <strong>13:30-15:30:</strong> Practical lab exercises for Lecture One content.<br>
-          <strong>15:30-16:30:</strong> Research Talk One.
+          <strong>15:30-16:30:</strong> Research Talk One: Charlie Rahal.
         </td>
         <td class="materials-links">
           <a href="https://github.com/lcds-teaching/python_032026/blob/main/Lectures/Lecture_1.ipynb">Lecture Materials</a><br>
@@ -87,7 +87,7 @@ title: Python for Health, Economic, and Social Data Science
           <strong>09:30-12:30:</strong> Lecture Two: Iterating over a collection, Boolean logic, advanced loops, user input, and error handling.<br>
           <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
           <strong>13:30-15:30:</strong> Practical lab exercises for Lecture Two content.<br>
-          <strong>15:30-16:30:</strong> Research Talk Two.
+          <strong>15:30-16:30:</strong> Research Talk Two: Yuqi Liang.
         </td>
         <td class="materials-links">
           <a href="https://github.com/lcds-teaching/python_032026/blob/main/Lectures/Lecture_2.ipynb">Lecture Materials</a><br>
@@ -117,7 +117,7 @@ title: Python for Health, Economic, and Social Data Science
           <strong>09:30-12:30:</strong> Lecture Four: Random numbers, webscraping, and Pandas.<br>
           <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
           <strong>13:30-15:30:</strong> Practical lab exercises for Lecture Four content.<br>
-          <strong>15:30-16:30:</strong> Research Talk Four.
+          <strong>15:30-16:30:</strong> Research Talk Four: Jiani Yan.
         </td>
         <td class="materials-links">
           <a href="https://github.com/lcds-teaching/python_032026/blob/main/Lectures/Lecture_4.ipynb">Lecture Materials</a><br>
@@ -132,7 +132,7 @@ title: Python for Health, Economic, and Social Data Science
           <strong>09:30-12:30:</strong> Lecture Five: Matplotlib, statsmodels, RobustiPy, NLTK, and scikit-learn.<br>
           <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
           <strong>13:30-15:30:</strong> Practical lab exercises for Lecture Five content.<br>
-          <strong>15:30-16:30:</strong> Research Talk Five.
+          <strong>15:30-16:30:</strong> Research Talk Five: Daniel Valdenegro.
         </td>
         <td class="materials-links">
           <a href="https://github.com/lcds-teaching/python_032026/blob/main/Lectures/Lecture_5.ipynbb">Lecture Materials</a><br>
