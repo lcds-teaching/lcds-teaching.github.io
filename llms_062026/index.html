@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Large Language Models for Health and Social Science Research short course at Nuffield College, University of Oxford.">
+  <title>Large Language Models for Health and Social Science Research</title>
+  <style>
+    :root {
+      --course-surface: #fffdf8;
+      --course-border: #d9ccb3;
+      --course-ink: #1f2c38;
+      --course-muted: #4f5d69;
+      --course-accent: #0e6a63;
+      --course-accent-soft: #e8f4f2;
+      --course-gold: #faf3e4;
+      --course-line: #ebdfc9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--course-ink);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 8%, #fff 0%, transparent 35%),
+        radial-gradient(circle at 90% 85%, #f4dfbe 0%, transparent 40%),
+        linear-gradient(130deg, #f3efe5 0%, #e8efe9 100%);
+    }
+
+    a {
+      color: var(--course-accent);
+      font-weight: 650;
+    }
+
+    a:hover {
+      color: #0b504a;
+    }
+
+    .wrapper {
+      width: min(920px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 2.5rem;
+    }
+
+    .course-page {
+      background: var(--course-surface);
+      border: 1px solid var(--course-border);
+      border-radius: 8px;
+      padding: 1.35rem;
+      box-shadow: 0 14px 30px rgba(21, 35, 51, 0.1);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 112px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.15rem;
+      color: var(--course-accent);
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-title {
+      margin: 0;
+      color: var(--course-muted);
+      font-weight: 650;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--course-ink);
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: clamp(2rem, 3vw, 2.65rem);
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 1.85rem 0 0.65rem;
+      font-size: 1.45rem;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 1rem 0 0.35rem;
+      font-size: 1.08rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0.55rem 0;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.28rem 0;
+    }
+
+    .lead {
+      margin: 0 0 1rem;
+      color: var(--course-muted);
+      font-size: 1.08rem;
+    }
+
+    .course-hero {
+      margin: 1rem 0 1.35rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--course-accent);
+      border-radius: 8px;
+      background: linear-gradient(140deg, #f7fbfa 0%, #eef6f4 100%);
+    }
+
+    .course-hero-tag {
+      margin: 0 0 0.65rem;
+      color: var(--course-accent);
+      font-size: 0.88rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .course-hero-people {
+      margin: 0.32rem 0;
+      color: var(--course-muted);
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .quick-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.35rem;
+      padding: 0.45rem 0.7rem;
+      border: 1px solid #9ec9c3;
+      border-radius: 8px;
+      background: var(--course-accent-soft);
+      text-decoration: none;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin: 1rem 0 1.45rem;
+    }
+
+    .course-card {
+      border: 1px solid #e6dcc8;
+      border-radius: 8px;
+      padding: 0.85rem 0.95rem;
+      background: #fff;
+    }
+
+    .course-card h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .course-card p {
+      margin-bottom: 0;
+      color: var(--course-muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: 0.62rem 0.68rem;
+      border-bottom: 1px solid var(--course-line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .schedule-table th {
+      color: var(--course-ink);
+      background: var(--course-gold);
+    }
+
+    .schedule-table td:first-child {
+      width: 18%;
+    }
+
+    .schedule-table td:nth-child(2) {
+      width: 21%;
+    }
+
+    .materials-links a {
+      display: inline-block;
+      margin-bottom: 0.25rem;
+    }
+
+    .registration-alert {
+      margin-top: 1.3rem;
+      padding: 1rem 1.05rem;
+      border: 1px solid #9ec9c3;
+      border-radius: 8px;
+      background: var(--course-accent-soft);
+    }
+
+    .registration-alert p {
+      margin: 0.45rem 0;
+    }
+
+    .note {
+      color: var(--course-muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      .wrapper {
+        width: min(100% - 1rem, 920px);
+        padding: 0.5rem 0 1.2rem;
+      }
+
+      .course-page {
+        padding: 1rem 0.95rem;
+      }
+
+      header {
+        align-items: flex-start;
+      }
+
+      .brand-logo {
+        width: 86px;
+      }
+
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-table th,
+      .schedule-table td {
+        padding: 0.5rem;
+        font-size: 0.92rem;
+      }
+
+      .materials-links a {
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+    <article class="course-page">
+      <header aria-label="Leverhulme Centre for Demographic Science">
+        <a href="../" aria-label="Open short courses landing page">
+          <img class="brand-logo" src="../python_032026/assets/logo1.png" alt="Leverhulme Centre for Demographic Science logo">
+        </a>
+        <div>
+          <p class="eyebrow">Leverhulme Centre for Demographic Science</p>
+          <p class="brand-title">Short Courses</p>
+        </div>
+      </header>
+
+      <h1>Large Language Models for Health and Social Science Research</h1>
+      <p class="lead">A five-day applied course on using, evaluating, and governing large language models in health and social science research.</p>
+
+      <div class="course-hero">
+        <p class="course-hero-tag">In-person | Fully catered | 5 days | LLM foundations, APIs, local models, and responsible research design</p>
+        <p class="course-hero-people"><strong>About:</strong> This course treats LLMs as research tools for classification, summarisation, information extraction, coding, data exploration, and reproducible workflows. The emphasis is practical: model outputs must be validated, documented, and interpreted carefully before they become evidence.</p>
+        <p class="course-hero-people"><strong>Dates:</strong> 29 June-3 July 2026</p>
+        <p class="course-hero-people"><strong>Times:</strong> 09:30-16:30 each day</p>
+        <p class="course-hero-people"><strong>Location:</strong> Nuffield College, University of Oxford</p>
+        <p class="course-hero-people"><strong>Convenors:</strong> <a href="https://www.demography.ox.ac.uk/people/dr-daniel-valdenegro" target="_blank" rel="noopener noreferrer">Daniel Valdenegro</a> and <a href="https://www.demography.ox.ac.uk/people/dr-charles-rahal" target="_blank" rel="noopener noreferrer">Charles Rahal</a></p>
+      </div>
+
+      <div class="quick-links" aria-label="Course resources">
+        <a href="https://github.com/lcds-teaching/llms_062026" target="_blank" rel="noopener noreferrer">Course GitHub</a>
+        <a href="https://github.com/lcds-teaching/llms_062026/blob/main/setup.md" target="_blank" rel="noopener noreferrer">Pre-arrival setup</a>
+        <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md" target="_blank" rel="noopener noreferrer">Reading list</a>
+        <a href="https://github.com/lcds-teaching/llms_062026/blob/main/api_setup.md" target="_blank" rel="noopener noreferrer">API setup</a>
+        <a href="https://github.com/lcds-teaching/llms_062026/blob/main/BEGINNER_GUIDE.md" target="_blank" rel="noopener noreferrer">Beginner guide</a>
+      </div>
+
+      <p><strong>Setup:</strong> Please complete the Git, Anaconda Python, VS Code, course package, OpenAI API, and Ollama setup notes before the relevant labs. Bring your laptop even if one step fails; setup support will be part of the course.</p>
+
+      <p><strong>Pre-arrival reading:</strong> The minimal reading list covers language-model foundations, computational social science applications, foundation-model risks, responsible use, and the limits of substituting LLMs for human participants. The full lecture-by-lecture list is available in the <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md" target="_blank" rel="noopener noreferrer">course repository</a>.</p>
+
+      <div class="registration-alert">
+        <p><strong>Registration:</strong> Registration closed at 23:59 GMT on 18 June 2026.</p>
+        <p><strong>Attendance recognition:</strong> Accredible badges will be awarded.</p>
+        <p><strong>Queries:</strong> <a href="mailto:teaching@demography.ox.ac.uk">teaching@demography.ox.ac.uk</a></p>
+      </div>
+
+      <h2>What You Will Leave With</h2>
+      <ul>
+        <li>A working vocabulary for NLP, tokenisation, embeddings, attention, Transformers, hosted models, and local model runtimes.</li>
+        <li>Experience building simple Python text workflows before moving to LLM classification, summarisation, and extraction tasks.</li>
+        <li>Practical skills in accessing, fine-tuning or parameter-tuning, and applying LLMs to research datasets with reproducibility logs.</li>
+        <li>Hands-on comparison of small locally hosted models through Ollama, including accuracy, valid-label rate, speed, parameters, and prompt style.</li>
+        <li>A research design framework for validation, documentation, privacy, governance, synthetic data, multimodal artefacts, and human review.</li>
+      </ul>
+
+      <h2>Pre-arrival Checklist</h2>
+      <div class="course-grid">
+        <div class="course-card">
+          <h3>Core software</h3>
+          <p>Install Git, Anaconda Python, VS Code, and the Microsoft Python and Jupyter extensions. The course environment uses Python 3.12 and the repository requirements file.</p>
+        </div>
+        <div class="course-card">
+          <h3>Remote model access</h3>
+          <p>Lab Three requires an OpenAI API key and an available model name stored as <code>OPENAI_API_KEY</code> and <code>OPENAI_MODEL</code>. Use only synthetic or approved de-identified examples.</p>
+        </div>
+        <div class="course-card">
+          <h3>Local model access</h3>
+          <p>Lab Four requires Ollama. The notebook prepares <code>smollm2:135m</code>, <code>gemma3:270m</code>, and <code>qwen2.5:0.5b</code>, with each model under roughly half a GB.</p>
+        </div>
+        <div class="course-card">
+          <h3>Beginner support</h3>
+          <p>The beginner guide explains notebooks, kernels, common Python objects, errors, and how to approach lab questions. The glossary covers the main programming, NLP, API, and governance terms.</p>
+        </div>
+      </div>
+
+      <h2>Course Plan by Day (09:30-16:30)</h2>
+      <div class="table-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Location</th>
+              <th>What Happens</th>
+              <th>Materials</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Day 1</strong><br>Mon 29 Jun 2026</td>
+              <td>Nuffield College, Oxford</td>
+              <td>
+                <strong>09:30-12:30:</strong> Foundations: NLP, tokenisation, computational text analysis, embeddings, attention, Transformers, and why LLMs matter for health and social science.<br>
+                <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
+                <strong>13:30-16:30:</strong> Lab One: Python foundations for LLM and NLP research, including strings, numbers, research records, lists, dictionaries, loops, functions, files, tables, and a mini text workflow.
+              </td>
+              <td class="materials-links">
+                <a href="https://github.com/lcds-teaching/llms_062026#structure" target="_blank" rel="noopener noreferrer">Course outline</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/Labs/Lab_One.ipynb" target="_blank" rel="noopener noreferrer">Lab One notebook</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md#lecture-1--foundations-from-text-to-language-models" target="_blank" rel="noopener noreferrer">Day 1 readings</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/setup.md" target="_blank" rel="noopener noreferrer">Pre-arrival setup</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Day 2</strong><br>Tue 30 Jun 2026</td>
+              <td>Nuffield College, Oxford</td>
+              <td>
+                <strong>09:30-12:30:</strong> Applications: LLMs in health and social science research, with emphasis on summarisation, information extraction, classification, evaluation, hallucination, and failure modes.<br>
+                <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
+                <strong>13:30-16:30:</strong> Lab Two: tokenisation, small local classifiers, text pipelines, validation against human labels, simple summaries, entity extraction, and failure-mode review.
+              </td>
+              <td class="materials-links">
+                <a href="https://github.com/lcds-teaching/llms_062026#structure" target="_blank" rel="noopener noreferrer">Course outline</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/Labs/Lab_Two.ipynb" target="_blank" rel="noopener noreferrer">Lab Two notebook</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md#lecture-2--applications-llms-in-health-and-social-science-research" target="_blank" rel="noopener noreferrer">Day 2 readings</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Day 3</strong><br>Wed 1 Jul 2026</td>
+              <td>Nuffield College, Oxford</td>
+              <td>
+                <strong>09:30-12:30:</strong> Working with current models: the model landscape, model choice, hosted APIs, locally hosted models, data governance, and how to document model use.<br>
+                <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
+                <strong>13:30-16:30:</strong> Lab Three: real OpenAI API calls using synthetic examples, credential checks, prompt construction, request payloads, response parsing, logging, parameter comparison, redaction, and classifier evaluation.
+              </td>
+              <td class="materials-links">
+                <a href="https://github.com/lcds-teaching/llms_062026#structure" target="_blank" rel="noopener noreferrer">Course outline</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/Labs/Lab_Three.ipynb" target="_blank" rel="noopener noreferrer">Lab Three notebook</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md#lecture-3--working-with-current-models" target="_blank" rel="noopener noreferrer">Day 3 readings</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/api_setup.md" target="_blank" rel="noopener noreferrer">API setup</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Day 4</strong><br>Thu 2 Jul 2026</td>
+              <td>Nuffield College, Oxford</td>
+              <td>
+                <strong>09:30-12:30:</strong> Local models, limitations, ethics, and responsible use: Ollama, LM Studio, small models for modest laptops, model weights, quantisation, context limits, validation, and governance for health and social research.<br>
+                <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
+                <strong>13:30-16:30:</strong> Lab Four: pull and smoke-test local models, compare outputs on a shared synthetic evaluation set, score accuracy and valid-label rate, tune parameters, inspect disagreements, and write a model recommendation.
+              </td>
+              <td class="materials-links">
+                <a href="https://github.com/lcds-teaching/llms_062026#structure" target="_blank" rel="noopener noreferrer">Course outline</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/Labs/Lab_Four.ipynb" target="_blank" rel="noopener noreferrer">Lab Four notebook</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md#lecture-4--limitations-ethics-and-responsible-use" target="_blank" rel="noopener noreferrer">Day 4 readings</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/setup.md#4-required-for-lab-four-prepare-a-local-llm-runtime" target="_blank" rel="noopener noreferrer">Ollama setup</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Day 5</strong><br>Fri 3 Jul 2026</td>
+              <td>Nuffield College, Oxford</td>
+              <td>
+                <strong>09:30-12:30:</strong> Future directions and research design: multimodal models, LLMs as measurement instruments, causal inference cautions, synthetic data, agentic systems, tool use, scientific workflows, and open questions.<br>
+                <strong>12:30-13:30:</strong> Lunch at Nuffield.<br>
+                <strong>13:30-16:30:</strong> Lab Five: multimodal artefact manifests, coding rubrics, human and LLM label comparison, synthetic respondent checks, safe tool registries, workflow logs, and a final applied research design.
+              </td>
+              <td class="materials-links">
+                <a href="https://github.com/lcds-teaching/llms_062026#structure" target="_blank" rel="noopener noreferrer">Course outline</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/Labs/Lab_Five.ipynb" target="_blank" rel="noopener noreferrer">Lab Five notebook</a><br>
+                <a href="https://github.com/lcds-teaching/llms_062026/blob/main/reading_list.md#lecture-5--future-directions-and-research-design" target="_blank" rel="noopener noreferrer">Day 5 readings</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Core Required Readings</h2>
+      <ul>
+        <li><a href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener noreferrer">Jurafsky and Martin, <em>Speech and Language Processing</em></a></li>
+        <li><a href="https://aclanthology.org/2024.cl-1.8/" target="_blank" rel="noopener noreferrer">Ziems et al., "Can Large Language Models Transform Computational Social Science?"</a></li>
+        <li><a href="https://arxiv.org/abs/2108.07258" target="_blank" rel="noopener noreferrer">Bommasani et al., "On the Opportunities and Risks of Foundation Models"</a></li>
+        <li><a href="https://doi.org/10.1145/3442188.3445922" target="_blank" rel="noopener noreferrer">Bender et al., "On the Dangers of Stochastic Parrots"</a></li>
+        <li><a href="https://doi.org/10.1177/25152459251357566" target="_blank" rel="noopener noreferrer">Lin, "Six Fallacies in Substituting Large Language Models for Human Participants"</a></li>
+      </ul>
+
+      <h2>Course Materials</h2>
+      <p>The live materials are maintained in the <a href="https://github.com/lcds-teaching/llms_062026" target="_blank" rel="noopener noreferrer">lcds-teaching/llms_062026 GitHub repository</a>. The repository includes the course outline, lab notebooks, setup guides, a beginner guide, a glossary, data notes, figures, and solution notes.</p>
+
+      <p class="note">Please use synthetic, public, or approved de-identified data only. Do not paste confidential health, social care, interview, institutional, patient, client, or service-user data into hosted APIs, local models, notebooks, screenshots, or shared documents.</p>
+    </article>
+  </main>
+</body>
+</html>
